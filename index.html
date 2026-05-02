@@ -1,0 +1,171 @@
+<!DOCTYPE html> 
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guia de Cinema</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Material Symbols -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48;
+      vertical-align: middle;
+      font-size: 2rem;
+      /* padrão para ícones menores */
+    }
+    .material-symbols-outlined.main-icon {
+      font-size: 3.2rem;
+      /* ícone principal maior */
+    }
+    @media (max-width: 600px) {
+      .material-symbols-outlined.main-icon {
+        font-size: 2.2rem;
+      }
+      header h1 {
+        font-size: 1.5rem !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+
+<header>
+  <h1 tabindex="0">
+    <span class="material-symbols-outlined main-icon" tabindex="0">movie</span>
+    Guia de Cinema
+  </h1>
+</header>
+
+
+<nav>
+  <ul>
+    <li><a href="#" tabindex="0">Início</a></li>
+    <li><a href="#" tabindex="0">Filmes</a></li>
+  </ul>
+</nav>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2 tabindex="0"><span class="material-symbols-outlined" tabindex="0">theater_comedy</span> Gêneros</h2>
+    <ul>
+      <li tabindex="0">Terror</li>
+      <li tabindex="0">Comédia</li>
+      <li tabindex="0">Drama</li>
+      <li tabindex="0">Documentário</li>
+    </ul>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <h2 tabindex="0"><span class="material-symbols-outlined" tabindex="0">movie</span> Filmes</h2>
+
+    <!-- FILTROS -->
+  <div class="filtros">
+
+  <input type="radio" name="genero" id="todos" checked tabindex="0">
+  <label for="todos" tabindex="0">Todos</label>
+
+  <input type="radio" name="genero" id="terror" tabindex="0">
+  <label for="terror" tabindex="0">Terror</label>
+
+  <input type="radio" name="genero" id="comedia" tabindex="0">
+  <label for="comedia" tabindex="0">Comédia</label>
+
+  <input type="radio" name="genero" id="drama" tabindex="0">
+  <label for="drama" tabindex="0">Drama</label>
+
+  <input type="radio" name="genero" id="documentario" tabindex="0">
+  <label for="documentario" tabindex="0">Documentário</label>
+
+</div>
+
+
+    <!-- FILMES -->
+    <div class="grid">
+
+      <!-- COMÉDIA -->
+      <article class="card comedia" tabindex="0">
+        <img src="https://static.wikia.nocookie.net/disneyfadas/images/6/64/Sininho_capa_do_filme.png/revision/latest?cb=20191230212726&path-prefix=pt" tabindex="0">
+        <h3 tabindex="0">Tinker Bell (2008)</h3>
+        <p tabindex="0">Uma fada descobre seu talento especial no mundo mágico.</p>
+        <p tabindex="0">⭐⭐⭐⭐☆</p>
+      </article>
+
+      <!-- DRAMA -->
+      <article class="card drama" tabindex="0">
+        <img src="https://br.web.img3.acsta.net/c_310_420/medias/nmedia/18/95/59/60/20417256.jpg" tabindex="0">
+        <h3 tabindex="0">Harry Potter e a Pedra Filosofal</h3>
+        <p tabindex="0">Um garoto descobre que é um bruxo e entra em Hogwarts.</p>
+        <p tabindex="0">⭐⭐⭐⭐⭐</p>
+      </article>
+
+      <!-- DRAMA -->
+      <article class="card drama" tabindex="0">
+        <img src="https://br.web.img3.acsta.net/c_310_420/pictures/16/09/29/22/31/239318.jpg" tabindex="0">
+        <h3 tabindex="0">O Lar das Crianças Peculiares</h3>
+        <p tabindex="0">Um jovem descobre um lugar cheio de crianças com poderes especiais.</p>
+        <p tabindex="0">⭐⭐⭐⭐☆</p>
+      </article>
+
+      <!-- TERROR -->
+      <article class="card terror" tabindex="0">
+        <img src="https://br.web.img2.acsta.net/c_310_420/pictures/16/04/18/20/43/025084.jpg" tabindex="0">
+        <h3 tabindex="0">Invocação do Mal 2</h3>
+        <p tabindex="0">Em Invocação do Mal 2, os investigadores paranormais Ed (Patrick Wilson) e Lorraine (Vera Farmiga) desembarcam em Londres, Inglaterra, para ajudar uma família atormentada.</p>
+        <p tabindex="0">⭐⭐⭐☆☆</p>
+      </article>
+
+      <!-- DOCUMENTÁRIO -->
+      <article class="card documentario" tabindex="0">
+        <img src="https://br.web.img3.acsta.net/c_310_420/pictures/14/05/16/21/07/113959.jpg" tabindex="0">
+        <h3 tabindex="0">Amazônia</h3>
+        <p tabindex="0">Castanha (voz de Lúcio Mauro Filho) é um macaco prego, criado em cativeiro, que é liberado na Floresta Amazônica.</p>
+        <p tabindex="0">⭐⭐⭐⭐⭐</p>
+      </article>
+
+    </div>
+
+
+
+  <div class="cadastro" tabindex="0">
+  <h2 tabindex="0"><span class="material-symbols-outlined" tabindex="0">arrow_shape_up</span> Receba novidades</h2>
+  <p tabindex="0">Cadastre-se para receber novos filmes e atualizações!</p>
+
+  <form>
+    <input type="text" placeholder="Seu nome" required tabindex="0">
+    <input type="email" placeholder="Seu email" required tabindex="0">
+    <button type="submit" tabindex="0">Cadastrar</button>
+  </form>
+</div>
+
+
+  </main>
+
+  <!-- ASIDE -->
+  <aside class="extra" tabindex="0">
+    <h2 tabindex="0"><span class="material-symbols-outlined" tabindex="0">arrow_shape_up</span> Top 3</h2>
+    <ol>
+      <li tabindex="0">Interestelar</li>
+      <li tabindex="0">Harry Potter</li>
+      <li tabindex="0">Tinker Bell</li>
+    </ol>
+  </aside>
+
+</div>
+
+<footer>
+  <p tabindex="0">© 2026 - CineGuia</p>
+</footer>
+
+</body>
+</html>
