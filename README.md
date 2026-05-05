@@ -29,4 +29,4 @@ Oferecer um guia visual de filmes, permitindo ao usuário filtrar por gênero, v
 - Compatível com ferramentas como Lighthouse
 
 ---
-💚
+💚💚💚
