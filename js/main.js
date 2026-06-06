@@ -34,17 +34,3 @@ window.addEventListener("keydown", (event) => {
     closeMenu();
   }
 });
-
-// hover / focus play-preview behavior
-document.querySelectorAll('.card').forEach(card => {
-  const vid = card.querySelector('video.preview');
-  if (!vid) return;
-
-  // play when pointer enters or card receives focus
-  card.addEventListener('mouseenter', () => { vid.currentTime = 0; vid.play().catch(() => {}); });
-  card.addEventListener('focusin',    () => { vid.currentTime = 0; vid.play().catch(() => {}); });
-
-  // pause/reset when pointer leaves or card loses focus
-  card.addEventListener('mouseleave', () => { vid.pause(); vid.currentTime = 0; });
-  card.addEventListener('focusout',   () => { vid.pause(); vid.currentTime = 0; });
-});

@@ -1,181 +1,136 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR" data-theme="dark">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guia de Cinema</title>
-  <link rel="stylesheet" href="./styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guia de Cinema</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
-  <header>
-    <div class="header-inner">
-      <button class="menu-toggle" onclick="toggleMenu()" aria-expanded="false" aria-controls="sidebar" aria-label="Abrir menu">
-        <span class="material-symbols-outlined">menu</span>
+  <body>
+    <header>
+      <div class="header-inner">
+        <button
+          class="menu-toggle"
+          onclick="toggleMenu()"
+          aria-expanded="false"
+          aria-controls="sidebar"
+          aria-label="Abrir menu"
+        >
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+
+        <h1 class="header-title">CineGuia</h1>
+
+        <nav class="header-nav">
+          <a href="#inicio">Início</a>
+          <span class="nav-separator" aria-hidden="true">|</span>
+          <a href="#filmes">Filmes</a>
+          <span class="nav-separator" aria-hidden="true">|</span>
+          <a href="#series">Séries</a>
+          <span class="nav-separator" aria-hidden="true">|</span>
+          <a href="#contato">Contato</a>
+        </nav>
+      </div>
+    </header>
+
+    <aside
+      class="sidebar"
+      id="sidebar"
+      aria-label="Navegação de gêneros"
+      aria-hidden="true"
+    >
+      <button
+        class="sidebar-close"
+        onclick="toggleMenu()"
+        aria-label="Fechar menu"
+      >
+        <span class="material-symbols-outlined">close</span>
       </button>
 
-      <h1 class="header-title">CineGuia</h1>
+      <h2>Gêneros</h2>
 
-      <nav class="header-nav">
-        <a href="#inicio">Início</a>
-        <span class="nav-separator" aria-hidden="true">|</span>
-        <a href="#filmes">Filmes</a>
-        <span class="nav-separator" aria-hidden="true">|</span>
-        <a href="#series">Séries</a>
-        <span class="nav-separator" aria-hidden="true">|</span>
-        <a href="#contato">Contato</a>
-      </nav>
+      <ul class="sidebar-list">
+        <li><button type="button">Terror</button></li>
+        <li><button type="button">Comédia</button></li>
+        <li><button type="button">Drama</button></li>
+        <li><button type="button">Documentário</button></li>
+        <li>
+          <button
+            class="theme-toggle"
+            onclick="toggleTheme()"
+            type="button"
+            aria-label="Alternar tema"
+          >
+            <span class="material-symbols-outlined">contrast</span>
+            Tema
+          </button>
+        </li>
+        <li>
+          <button
+            class="sidebar-logout"
+            type="button"
+            onclick="window.location.href = './pages/cadastro.html'"
+            aria-label="Sair"
+          >
+            Sair
+          </button>
+        </li>
+      </ul>
+    </aside>
+
+    <div
+      class="backdrop"
+      id="backdrop"
+      onclick="closeMenu()"
+      aria-hidden="true"
+    ></div>
+
+    <div class="layout">
+      <main class="main">
+        <div class="filtros">
+          <input type="radio" name="genero" id="todos" checked />
+          <label for="todos">Todos</label>
+
+          <input type="radio" name="genero" id="terror" />
+          <label for="terror">Terror</label>
+
+          <input type="radio" name="genero" id="comedia" />
+          <label for="comedia">Comédia</label>
+
+          <input type="radio" name="genero" id="drama" />
+          <label for="drama">Drama</label>
+
+          <input type="radio" name="genero" id="documentario" />
+          <label for="documentario">Documentário</label>
+        </div>
+
+        <div id="catalogo" class="grid" aria-live="polite" aria-busy="true">
+          <p class="message" role="status">Carregando conteúdos...</p>
+        </div>
+      </main>
     </div>
-  </header>
 
-  <aside class="sidebar" id="sidebar" aria-label="Navegação de gêneros" aria-hidden="true">
-    <button class="sidebar-close" onclick="toggleMenu()" aria-label="Fechar menu">
-      <span class="material-symbols-outlined">close</span>
-    </button>
+    <footer>
+      <p>© 2026 Guia de Cinema. Todos os direitos reservados.</p>
+    </footer>
 
-    <h2>Gêneros</h2>
-
-    <ul class="sidebar-list">
-      <li><button type="button">Terror</button></li>
-      <li><button type="button">Comédia</button></li>
-      <li><button type="button">Drama</button></li>
-      <li><button type="button">Documentário</button></li>
-      <li>
-        <button class="theme-toggle" onclick="toggleTheme()" type="button" aria-label="Alternar tema">
-          <span class="material-symbols-outlined">contrast</span>
-          Tema
-        </button>
-      </li>
-      <li>
-         <button class="sidebar-logout" type="button" onclick="window.location.href='./pages/cadastro.html'" aria-label="Sair">Sair</button>
-      </li>
-    </ul>
-  </aside>
-
-  <div class="backdrop" id="backdrop" onclick="closeMenu()" aria-hidden="true"></div>
-
-  <div class="layout">
-    <main class="main">
-      <div class="filtros">
-        <input type="radio" name="genero" id="todos" checked />
-        <label for="todos">Todos</label>
-
-        <input type="radio" name="genero" id="terror" />
-        <label for="terror">Terror</label>
-
-        <input type="radio" name="genero" id="comedia" />
-        <label for="comedia">Comédia</label>
-
-        <input type="radio" name="genero" id="drama" />
-        <label for="drama">Drama</label>
-
-        <input type="radio" name="genero" id="documentario" />
-        <label for="documentario">Documentário</label>
+    <div id="movieModal" class="modal hidden" aria-hidden="true">
+      <div
+        class="modal-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+      >
+        <div id="modalContent"></div>
       </div>
+    </div>
 
-      <div class="grid">
-        <article class="card comedia">
-          <div class="card-media">
-            <img src="./assents/Sininho_capa_do_filme.webp" alt="Tinker Bell" />
-            <video class="preview" autoplay muted loop playsinline preload="metadata" src="./assents/tinker-video.mp4" aria-hidden="true"></video>
-          </div>
-          <h3>Tinker Bell (2008)</h3>
-          <p>⭐⭐⭐⭐⭐</p>
-          <p>Uma fada descobre seu talento especial no mundo mágico.</p>
-        </article>
-
-        <article class="card drama">
-          <div class="card-media">
-            <img src="./assents/Harry_Potter_Pedra_Filosofal_2001.jpg" alt="Harry Potter" />
-            <video class="preview" autoplay muted loop playsinline preload="metadata" src="./assents/harry-video.mp4" aria-hidden="true"></video>
-          </div>
-          <h3>Harry Potter e a Pedra Filosofal</h3>
-          <p>⭐⭐⭐⭐⭐</p>
-          <p>Um garoto descobre que é um bruxo e entra em Hogwarts.</p>
-        </article>
-
-        <article class="card drama">
-          <div class="card-media">
-            <img src="./assents/criancas.jpg" alt="O lar das crianças peculiares" />
-            <video class="preview" autoplay muted loop playsinline preload="metadata" src="./assents/peculiares-video.mp4" aria-hidden="true"></video>
-          </div>
-          <h3>O Lar das Crianças Peculiares</h3>
-          <p>⭐⭐⭐⭐☆</p>
-          <p>Um jovem descobre um lugar cheio de crianças com poderes especiais.</p>
-        </article>
-
-        <article class="card terror">
-          <div class="card-media">
-            <img src="./assents/mal.png" alt="Invocação do mal" />
-            <video class="preview" autoplay muted loop playsinline preload="metadata" src="./assents/mal-video.mp4" aria-hidden="true"></video>
-          </div>
-          <h3>Invocação do Mal 2</h3>
-          <p>⭐⭐⭐☆☆</p>
-          <p>Os investigadores paranormais Ed e Lorraine ajudam uma família atormentada.</p>
-        </article>
-
-        <article class="card terror">
-          <div class="card-media">
-            <img src="./assents/obssessão.webp" alt="Obsessão" />
-            <video class="preview" autoplay muted loop playsinline preload="metadata" src="./assents/obssessao-video.mp4" aria-hidden="true"></video>
-          </div>
-          <h3>Obsessão</h3>
-          <p>⭐⭐⭐☆☆</p>
-          <p>Uma investigação sombria leva uma equipe a uma casa cheia de segredos.</p>
-        </article>
-
-        <article class="card terror">
-          <div class="card-media">
-            <img src="./assents/download.jpg" alt="Aranhaverso" />
-            <video class="preview" autoplay muted loop playsinline preload="metadata" src="./assents/aranhaverso-video.mp4" aria-hidden="true"></video>
-          </div>
-          <h3>Aranhaverso</h3>
-          <p>⭐⭐⭐⭐⭐</p>
-          <p>Um jovem herói atravessa universos para salvar sua realidade.</p>
-        </article>
-
-        <article class="card terror">
-          <div class="card-media">
-            <img src="./assents/tinker-bell.webp" alt="Tinker Bell" />
-            <video class="preview" autoplay muted loop playsinline preload="metadata" src="./assents/tinker-irma-video.mp4" aria-hidden="true"></video>
-          </div>
-          <h3>Tinker Bell - Dois Mundos, Um Segredo</h3>
-          <p>⭐⭐⭐⭐⭐</p>
-          <p>Uma fada descobre seu talento especial no mundo mágico.</p>
-        </article>
-
-        <article class="card documentario">
-          <div class="card-media">
-            <img src="./assents/amazoniaa.jpg" alt="Amazônia" />
-            <video class="preview" autoplay muted loop playsinline preload="metadata" src="./assents/amazonia-video.mp4" aria-hidden="true"></video>
-          </div>
-          <h3>Amazônia</h3>
-          <p>⭐⭐⭐⭐⭐</p>
-          <p>Castanha é um macaco prego liberado na Floresta Amazônica.</p>
-        </article>
-      </div>
-
-      <section class="cadastro">
-        <h2>
-          <span class="material-symbols-outlined">arrow_shape_up</span>
-          Receba novidades
-        </h2>
-        <p>Cadastre-se para receber novos filmes e atualizações!</p>
-
-        <form>
-          <input type="text" placeholder="Seu nome" required />
-          <input type="email" placeholder="Seu email" required />
-          <button type="submit">Cadastrar</button>
-        </form>
-      </section>
-    </main>
-  </div>
-
-  <footer>
-    <p>© 2026 Guia de Cinema. Todos os direitos reservados.</p>
-  </footer>
-
-  <script src="./js/main.js"></script>
-</body>
+    <script src="./js/main.js"></script>
+    <script src="./js/cards.js"></script>
+  </body>
 </html>
