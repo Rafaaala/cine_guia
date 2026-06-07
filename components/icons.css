@@ -1,9 +1,15 @@
 .material-symbols-outlined {
+  /*
+    components/icons.css
+    ---------------------
+    Ajustes de tamanho e variações para o conjunto de ícones Material Symbols usados na UI.
+    - `.main-icon` é usado para o logotipo/menu principal.
+  */
   font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 48;
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 48;
 
   vertical-align: middle;
   font-size: 2rem;
@@ -14,7 +20,6 @@
 }
 
 @media (max-width: 600px) {
-
   .material-symbols-outlined.main-icon {
     font-size: 2.2rem;
   }
@@ -22,5 +27,4 @@
   header h1 {
     font-size: 1.5rem;
   }
-
 }

@@ -1,10 +1,15 @@
-:root {
+/*
+  tokens/spacing.css
+  ------------------
+  Sistema de espaçamento escalonado usado por componentes (`--space-2`, `--space-4`, ...).
+  Mantém consistência de gutters, paddings e gaps entre elementos.
+*/
 
+:root {
   --space-2: 0.5rem;
   --space-3: 0.75rem;
   --space-4: 1rem;
   --space-6: 1.5rem;
   --space-8: 2rem;
   --space-10: 2.5rem;
-
 }

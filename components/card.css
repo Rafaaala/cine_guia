@@ -1,4 +1,15 @@
+/*
+  components/card.css
+  --------------------
+  Estilos do componente "card" usado no catálogo de filmes/séries.
+
+  Responsabilidades:
+  - Layout e dimensões do card (imagem + informações)
+  - Comportamento responsivo (ajuste de altura/colunas)
+  - Estados de foco/hover para acessibilidade visual
+*/
 /* MAIN */
+/* Container principal que agrupa o catálogo e áreas relacionadas (grid/aside). */
 .main {
   display: flex;
   flex-direction: column;
@@ -6,6 +17,7 @@
   width: 100%;
 }
 
+/* Grade responsiva de cards: define colunas automáticas e altura das linhas. */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -15,6 +27,7 @@
   align-items: stretch;
 }
 
+/* Mensagens que ocupam toda a grade (ex: "Nenhum resultado"). */
 .message {
   grid-column: 1 / -1;
   padding: var(--space-5) 0;
@@ -22,6 +35,8 @@
   color: var(--color-text-secondary);
 }
 
+/* Card individual: estrutura flex vertical com imagem + conteúdo.
+  Uso de min/max-height para manter layout consistente e evitar clippings. */
 .card {
   position: relative;
   background: var(--color-surface-card);
@@ -38,6 +53,7 @@
   max-height: 360px;
 }
 
+/* Área da mídia (poster). Mantém proporção e oculta overflow. */
 .card-media {
   width: 100%;
   min-height: 240px;
@@ -52,6 +68,8 @@
   display: block;
 }
 
+/* Conteúdo textual do card: título, tipos, gêneros e metadados.
+   Usamos flex com gap e `margin-top: auto` no footer para prender o rodapé. */
 .card-info {
   padding: var(--space-4);
   display: flex;
@@ -60,6 +78,7 @@
   flex: 1 1 auto;
 }
 
+/* Título do card: destaque visual (cor de ação/accent). */
 .card h3 {
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-bold);
@@ -68,6 +87,7 @@
   line-height: 1.2;
 }
 
+/* Flag de tipo (Filme / Série): estilo de etiqueta inline para identificação rápida. */
 .card-type {
   display: inline-flex;
   align-items: center;
@@ -81,6 +101,7 @@
   letter-spacing: 0.06em;
 }
 
+/* Lista resumida de gêneros (limitada pelo JS). Separador visual simples. */
 .card-genres {
   margin: 0;
   color: var(--color-text-secondary);
@@ -88,6 +109,8 @@
   line-height: 1.4;
 }
 
+/* Rodapé interno do card: agrupa rating e outros metadados.
+   `margin-top: auto` empurra esse bloco para o final do card. */
 .card-meta {
   display: flex;
   align-items: center;
@@ -96,17 +119,20 @@
   margin-top: auto;
 }
 
+/* Class de rating: texto secundário que mostra nota e emoji. */
 .card .rating {
   margin: 0;
   color: var(--color-text-secondary);
 }
 
+/* Interações: leve elevação e transformação ao hover/focus para indicar interatividade. */
 .card:hover,
 .card:focus-visible {
   transform: translateY(-4px) scale(1.03);
   box-shadow: var(--shadow-hover);
 }
 
+/* Modal full-screen para exibir detalhes do conteúdo selecionado. */
 .modal {
   position: fixed;
   inset: 0;
@@ -122,6 +148,7 @@
   display: none;
 }
 
+/* Painel interno do modal: card maior com conteúdo e fechamento. */
 .modal-panel {
   width: min(980px, 100%);
   max-width: 980px;
@@ -132,11 +159,13 @@
   position: relative;
 }
 
+/* Conteúdo do modal: padding e bloco de leitura. */
 #modalContent {
   display: block;
   padding: var(--space-6);
 }
 
+/* Grid dentro do modal: poster + detalhes alinhados. */
 .modal-card {
   display: grid;
   grid-template-columns: minmax(220px, 320px) 1fr;
@@ -175,6 +204,7 @@
   line-height: 1.6;
 }
 
+/* Botão de fechar do modal posicionado no canto superior direito. */
 .modal-close {
   position: absolute;
   top: var(--space-4);

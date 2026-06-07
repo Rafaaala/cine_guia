@@ -1,3 +1,11 @@
+/*
+  components/layout.css
+  ----------------------
+  Regras de grid e layout de alto nível:
+  - Espaçamentos do container principal `.layout`
+  - Comportamento da `sidebar` (menu lateral)
+  - Backdrop e comportamento responsivo via media queries
+*/
 /* LAYOUT */
 .layout {
   max-width: 1400px;
@@ -9,6 +17,8 @@
   container-name: layout;
 }
 
+/* Sidebar (menu lateral): contém filtros, botões e controles de tema.
+   Fica fora da tela por padrão e entra com a classe `.open`. */
 .sidebar {
   position: fixed;
   top: 0;
@@ -52,7 +62,9 @@
   background: var(--color-surface-body);
   color: var(--color-text-primary);
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
 
 .sidebar li button:hover,
@@ -81,6 +93,7 @@
   padding: var(--space-2);
 }
 
+/* Backdrop: camada escura que aparece por trás da sidebar/modal quando visível. */
 .backdrop {
   position: fixed;
   inset: 0;

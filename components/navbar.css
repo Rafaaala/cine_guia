@@ -1,3 +1,14 @@
+/*
+  components/navbar.css
+  ----------------------
+  Estilos relacionados ao header, navegação principal e botões de ação.
+
+  Pontos importantes:
+  - Define comportamento do menu responsivo e estilos do botão "menu-toggle".
+  - Aplica foco/hover com alto contraste usando variáveis semânticas.
+*/
+
+/* Base: reset mínimo e variáveis tipográficas do body */
 body {
   margin: 0;
   font-family: var(--font-family-base);
@@ -6,7 +17,8 @@ body {
   min-height: 100vh;
 }
 
-/* HEADER */
+/* HEADER
+   Estrutura do cabeçalho principal: container, título central e navegação. */
 header {
   background: var(--color-surface-header);
   color: var(--color-action-primary);

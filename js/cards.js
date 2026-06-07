@@ -1,3 +1,19 @@
+/*
+  js/cards.js
+  ----------------
+  Responsabilidades:
+  - Buscar e normalizar dados de filmes/séries (usando a API TMDB via fetch)
+  - Construir a marcação (cards) para o catálogo
+  - Renderizar o catálogo e aplicar filtros (por gênero e tipo)
+  - Gerenciar o modal de detalhes (abrir/fechar, foco e acessibilidade)
+
+  Observações de implementação:
+  - As funções estão escritas de forma imperativa e usam o DOM diretamente.
+  - Os dados de gênero são mapeados por ID para nome para facilitar exibição.
+  - O arquivo procura preservar acessibilidade: `aria-*`, foco no modal
+    e suporte a teclado para abrir cards.
+*/
+
 // Seleciona elementos do DOM necessários para renderizar o catálogo e o modal
 const catalogo = document.getElementById("catalogo");
 const modal = document.getElementById("movieModal");

@@ -1,3 +1,10 @@
+/*
+  components/forms.css
+  ---------------------
+  Estilos relacionados a formulários e controles de filtro.
+  - `.filtros`: botões/radios para filtrar por gênero
+  - `.cadastro`: formulário de exemplo para a página de cadastro
+*/
 /* FILTROS */
 .filtros {
   display: flex;
@@ -10,6 +17,8 @@
   display: none;
 }
 
+/* Botões visuais que representam filtros/genres. O input é escondido e o label
+   atua como o elemento clicável estilizado. */
 .filtros label {
   padding: var(--space-2) var(--space-4);
   border-radius: 2rem;
@@ -18,7 +27,9 @@
   cursor: pointer;
   border: 1.5px solid var(--color-border-default);
   font-size: var(--font-size-base);
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
 
 .filtros label:hover,
@@ -32,7 +43,6 @@ input:checked + label {
   color: var(--color-text-primary);
 }
 
-/* CADASTRO */
 .cadastro {
   background: var(--color-surface-card);
   padding: var(--space-6);

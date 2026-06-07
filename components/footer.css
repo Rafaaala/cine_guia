@@ -1,4 +1,12 @@
-﻿footer {
+﻿/*
+  components/footer.css
+  ----------------------
+  Estilos do rodapé (footer) do site.
+
+  Contém regras para layout responsivo do footer e formatação de links/contatos.
+*/
+footer {
+  /* Rodapé principal: contém áreas de contato, links e copyright. */
   margin-top: var(--space-8);
   padding: var(--space-5) var(--space-6);
   background: var(--color-surface-header);
@@ -9,6 +17,7 @@
 }
 
 .footer-inner {
+  /* Grid interno do footer: múltiplas colunas responsivas para seções. */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: var(--space-6);
@@ -19,6 +28,7 @@
 
 footer h2,
 footer h3 {
+  /* Títulos dentro do footer: usam a cor de accent para destaque. */
   margin: 0 0 var(--space-3);
   color: var(--color-accent);
 }
@@ -35,6 +45,7 @@ footer p {
 }
 
 .footer-copy {
+  /* Linha de copyright e notas menores do footer. */
   margin-top: var(--space-6);
   color: var(--color-text-secondary);
   font-size: 0.9rem;

@@ -1,3 +1,10 @@
+/*
+	styles.css
+	---------
+	Arquivo de entrada (manifest) que importa tokens (variáveis) e
+	componentes CSS. Mantém a ordem de camadas (layer) para controle de especificidade.
+*/
+
 @layer tokens, components;
 
 @import "./tokens/primitivos.css" layer(tokens);
@@ -11,4 +18,3 @@
 @import "./components/icons.css" layer(components);
 @import "./components/layout.css" layer(components);
 @import "./components/navbar.css" layer(components);
-

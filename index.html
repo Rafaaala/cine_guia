@@ -12,6 +12,7 @@
   </head>
 
   <body>
+    <!-- Header: navegação principal do site -->
     <header>
       <div class="header-inner">
         <button
@@ -38,6 +39,7 @@
       </div>
     </header>
 
+    <!-- Sidebar: lista de gêneros e ações secundárias (mobile) -->
     <aside
       class="sidebar"
       id="sidebar"
@@ -93,6 +95,7 @@
     ></div>
 
     <div class="layout">
+      <!-- Main: área principal que contém filtros e o catálogo -->
       <main class="main" id="inicio">
         <div class="filtros">
           <input type="radio" name="genero" id="todos" checked />
@@ -117,10 +120,11 @@
       </main>
     </div>
 
+    <!-- Footer: informações de contato e marca -->
     <footer id="contato">
       <div class="footer-inner">
         <div class="footer-brand">
-          <h2 color="red"><a href="#inicio">CineGuia</a></h2>
+          <h2><a href="#inicio">CineGuia</a></h2>
           <p>Seu guia completo de cinema e streaming.</p>
         </div>
         <div class="footer-links">
@@ -139,6 +143,7 @@
       </p>
     </footer>
 
+    <!-- Modal de detalhes: exibido ao clicar em um card -->
     <div id="movieModal" class="modal hidden" aria-hidden="true">
       <div
         class="modal-panel"

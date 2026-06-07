@@ -1,14 +1,21 @@
-:root {
+/*
+  tokens/typography.css
+  ---------------------
+  Variáveis tipográficas: família de fontes, tamanhos e pesos.
+  Use essas variáveis para manter hierarquia tipográfica consistente.
+*/
 
-  --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  
+:root {
+  --font-family-base:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+    Cantarell, sans-serif;
+
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
   --font-size-lg: 1.25rem;
   --font-size-xl: 2rem;
   --font-size-2xl: 2.5rem;
-  
+
   --font-weight-bold: 700;
   --font-weight-extra-bold: 900;
-
 }
