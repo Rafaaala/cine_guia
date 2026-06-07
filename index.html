@@ -26,14 +26,14 @@
 
         <h1 class="header-title">CineGuia</h1>
 
-        <nav class="header-nav">
-          <a href="#inicio">Início</a>
+        <nav class="header-nav" aria-label="Navegação principal">
+          <a href="#inicio" id="link-inicio" data-type="all">Início</a>
           <span class="nav-separator" aria-hidden="true">|</span>
-          <a href="#filmes">Filmes</a>
+          <a href="#catalogo" id="link-filmes" data-type="movie">Filmes</a>
           <span class="nav-separator" aria-hidden="true">|</span>
-          <a href="#series">Séries</a>
+          <a href="#catalogo" id="link-series" data-type="tv">Séries</a>
           <span class="nav-separator" aria-hidden="true">|</span>
-          <a href="#contato">Contato</a>
+          <a href="#contato" id="link-contato">Contato</a>
         </nav>
       </div>
     </header>
@@ -55,10 +55,12 @@
       <h2>Gêneros</h2>
 
       <ul class="sidebar-list">
-        <li><button type="button">Terror</button></li>
-        <li><button type="button">Comédia</button></li>
-        <li><button type="button">Drama</button></li>
-        <li><button type="button">Documentário</button></li>
+        <li><button type="button" data-genre="terror">Terror</button></li>
+        <li><button type="button" data-genre="comedia">Comédia</button></li>
+        <li><button type="button" data-genre="drama">Drama</button></li>
+        <li>
+          <button type="button" data-genre="documentario">Documentário</button>
+        </li>
         <li>
           <button
             class="theme-toggle"
@@ -91,7 +93,7 @@
     ></div>
 
     <div class="layout">
-      <main class="main">
+      <main class="main" id="inicio">
         <div class="filtros">
           <input type="radio" name="genero" id="todos" checked />
           <label for="todos">Todos</label>
@@ -115,8 +117,26 @@
       </main>
     </div>
 
-    <footer>
-      <p>© 2026 Guia de Cinema. Todos os direitos reservados.</p>
+    <footer id="contato">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <h2 color="red"><a href="#inicio">CineGuia</a></h2>
+          <p>Seu guia completo de cinema e streaming.</p>
+        </div>
+        <div class="footer-links">
+          <h3>Contato</h3>
+          <p>Email: contato@cineguia.com</p>
+          <p>Telefone: (11) 6869-0102</p>
+        </div>
+        <div class="footer-office">
+          <h3>Escritório</h3>
+          <p>Av. Unipê, 1234</p>
+          <p>João Pessoa - PB</p>
+        </div>
+      </div>
+      <p class="footer-copy">
+        © 2026 Guia de Cinema. Todos os direitos reservados.
+      </p>
     </footer>
 
     <div id="movieModal" class="modal hidden" aria-hidden="true">

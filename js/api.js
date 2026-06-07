@@ -1,4 +1,4 @@
-const API_KEY = "SUA_CHAVE";
+const API_KEY = "dbbfb3977b2e75c59fe0d2fed7ec0947";
 
 async function carregarFilmes() {
   const resposta = await fetch(

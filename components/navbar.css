@@ -30,7 +30,7 @@ header {
   left: 50%;
   transform: translateX(-50%);
   margin: 0;
-  color: red;
+  color: #ff0000;
   font-size: 1.5rem;
   font-weight: var(--font-weight-bold);
 }
@@ -51,13 +51,20 @@ header {
   text-decoration: none;
   padding: var(--space-2) var(--space-2);
   border-radius: var(--radius-small);
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
 
 .header-nav a:hover,
 .header-nav a:focus {
   background: var(--color-action-primary);
   color: var(--color-text-primary);
+}
+
+.header-nav a.active {
+  color: var(--color-action-primary);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .nav-separator {
@@ -102,7 +109,9 @@ nav a {
   text-decoration: none;
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-small);
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
 
 nav a:hover,

@@ -1,18 +1,23 @@
+// Seleciona elementos do DOM necessários para renderizar o catálogo e o modal
 const catalogo = document.getElementById("catalogo");
 const modal = document.getElementById("movieModal");
 const modalContent = document.getElementById("modalContent");
 
+// Configurações da API e imagens
 const API_KEY = "dbbfb3977b2e75c59fe0d2fed7ec0947";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 const FALLBACK_IMAGE =
   "https://via.placeholder.com/500x750?text=Imagem+indispon%C3%ADvel";
 
+// Variáveis globais para armazenar o conteúdo carregado e o estado atual
 let loadedContents = [];
 let displayedContents = [];
 let currentFilter = "todos";
+let currentTypeFilter = "all";
 let genreMap = {};
-let genreNameToId = {};
+let lastFocusedCard = null;
 
+// Faz uma requisição à API do TMDB com caminho e parâmetros fornecidos
 async function fetchFromTmdb(path, params = {}) {
   const query = new URLSearchParams({
     api_key: API_KEY,
@@ -28,6 +33,7 @@ async function fetchFromTmdb(path, params = {}) {
   return response.json();
 }
 
+// Normaliza texto removendo acentos e convertendo para minúsculas
 function normalizeLabel(value) {
   return String(value)
     .normalize("NFD")
@@ -35,28 +41,28 @@ function normalizeLabel(value) {
     .toLowerCase();
 }
 
+// Constrói um mapa de gêneros para converter IDs em nomes e também nomes normalizados em IDs
 function buildGenreMap(movieGenres, tvGenres) {
   const map = {};
-  const nameToId = {};
 
   movieGenres.forEach((genre) => {
     map[genre.id] = genre.name;
-    nameToId[normalizeLabel(genre.name)] = genre.id;
   });
 
   tvGenres.forEach((genre) => {
     map[genre.id] = genre.name;
-    nameToId[normalizeLabel(genre.name)] = genre.id;
   });
 
-  genreNameToId = nameToId;
   return map;
 }
 
+// Normaliza um item de filme ou série para o formato usado pela interface
 function normalizeContent(item, type) {
   const title = type === "movie" ? item.title : item.name;
   const date = type === "movie" ? item.release_date : item.first_air_date;
   const year = date ? new Date(date).getFullYear() : "2026";
+
+  // Converte a lista de IDs de gênero em nomes legíveis
   const genres = Array.isArray(item.genre_ids)
     ? item.genre_ids.map((id) => genreMap[id]).filter(Boolean)
     : [];
@@ -76,10 +82,16 @@ function normalizeContent(item, type) {
   };
 }
 
+// Gera o HTML de um card a partir do objeto de conteúdo
 function createCardMarkup(content) {
   const normalizedGenres = content.genres
     .map((genre) => normalizeLabel(genre))
     .join(",");
+
+  const limitedGenres = content.genres.slice(0, 2);
+  const genreLabel = limitedGenres.length
+    ? limitedGenres.join(" • ")
+    : "Sem gêneros definidos";
 
   return `
     <article class="card" tabindex="0" data-id="${content.id}" data-type="${content.type}" data-genres="${normalizedGenres}">
@@ -88,12 +100,17 @@ function createCardMarkup(content) {
       </div>
       <div class="card-info">
         <h3>${content.title}</h3>
-        <p class="rating">⭐ ${content.rating.toFixed(1)}</p>
+        <p class="card-genres">${genreLabel}</p>
+        <div class="card-meta">
+          <p class="rating">⭐ ${content.rating.toFixed(1)}</p>
+          <span class="card-type">${content.type === "movie" ? "Filme" : "Série"}</span>
+        </div>
       </div>
     </article>
   `;
 }
 
+// Intercala filmes e séries em uma única lista para exibição equilibrada
 function interleaveContent(movies, series, limit = 20) {
   const result = [];
   const maxLength = Math.max(movies.length, series.length);
@@ -110,6 +127,7 @@ function interleaveContent(movies, series, limit = 20) {
   return result.slice(0, limit);
 }
 
+// Calcula quantas colunas de cards cabem no layout atual do catálogo
 function getColumnsCount() {
   if (!catalogo) return 1;
 
@@ -122,6 +140,7 @@ function getColumnsCount() {
   return Math.max(1, Math.floor((containerWidth + gap) / (minCardWidth + gap)));
 }
 
+// Garante que o número de itens exibidos mantém grides completos sem deixar lacunas
 function buildDisplayedContents(contents, minItems = 40) {
   const columns = getColumnsCount();
   const rowCount = Math.ceil(minItems / columns);
@@ -129,6 +148,7 @@ function buildDisplayedContents(contents, minItems = 40) {
   return contents.slice(0, targetCount);
 }
 
+// Renderiza o catálogo no DOM usando o HTML gerado pelos cards
 function renderCatalog(contents) {
   if (!catalogo) return;
 
@@ -142,33 +162,94 @@ function renderCatalog(contents) {
   catalogo.removeAttribute("aria-busy");
 }
 
+// Exibe uma mensagem de erro quando a API falha ou não há catálogo disponível
 function showError(message) {
   if (!catalogo) return;
   catalogo.innerHTML = `<p class="message">${message}</p>`;
   catalogo.removeAttribute("aria-busy");
 }
 
+// Filtra o catálogo de acordo com o gênero selecionado pelo usuário
 function applyGenreFilter() {
   const selected = document.querySelector('input[name="genero"]:checked');
   if (!selected) return;
 
   currentFilter = selected.id;
-  if (currentFilter === "todos") {
-    displayedContents = buildDisplayedContents(loadedContents);
-    renderCatalog(displayedContents);
-    return;
+  renderFilteredContents();
+}
+
+function applyTypeFilter(type) {
+  currentTypeFilter = type;
+  currentFilter = "todos";
+
+  const allRadio = document.getElementById("todos");
+  if (allRadio) {
+    allRadio.checked = true;
   }
 
+  updateHeaderActiveLink();
+  renderFilteredContents();
+}
+
+function applySidebarGenreFilter(genre) {
+  currentFilter = genre;
+  currentTypeFilter = "all";
+
+  const radio = document.getElementById(genre);
+  if (radio) {
+    radio.checked = true;
+  }
+
+  updateHeaderActiveLink();
+  renderFilteredContents();
+}
+
+function getFilteredContents() {
   const normalizedFilter = normalizeLabel(currentFilter);
-  displayedContents = loadedContents.filter((item) =>
-    item.genres.some((genre) => normalizeLabel(genre) === normalizedFilter),
+
+  const genreFiltered =
+    currentFilter === "todos"
+      ? loadedContents
+      : loadedContents.filter((item) =>
+          item.genres.some(
+            (genre) => normalizeLabel(genre) === normalizedFilter,
+          ),
+        );
+
+  return genreFiltered.filter((item) =>
+    currentTypeFilter === "all" ? true : item.type === currentTypeFilter,
   );
+}
+
+function renderFilteredContents() {
+  const filtered = getFilteredContents();
+
+  if (currentFilter === "todos") {
+    displayedContents = buildDisplayedContents(filtered);
+  } else {
+    displayedContents = filtered;
+  }
 
   renderCatalog(displayedContents);
 }
 
+function updateHeaderActiveLink() {
+  document.querySelectorAll(".header-nav a").forEach((link) => {
+    const isActive = link.dataset.type === currentTypeFilter;
+    if (link.dataset.type) {
+      link.classList.toggle("active", isActive);
+      link.setAttribute("aria-current", isActive ? "page" : "false");
+    } else {
+      link.removeAttribute("aria-current");
+    }
+  });
+}
+
+// Abre o modal e preenche os detalhes do conteúdo selecionado
 function openModal(content) {
   if (!modal || !modalContent) return;
+
+  lastFocusedCard = document.activeElement;
 
   modalContent.innerHTML = `
     <button type="button" class="modal-close" aria-label="Fechar detalhes">×</button>
@@ -194,16 +275,27 @@ function openModal(content) {
 
   modal.classList.remove("hidden");
   modal.setAttribute("aria-hidden", "false");
+
+  const closeButton = modal.querySelector(".modal-close");
+  if (closeButton) {
+    closeButton.focus();
+  }
 }
 
+// Fecha o modal e limpa seu conteúdo
 function closeModal() {
   if (!modal || !modalContent) return;
 
   modal.classList.add("hidden");
   modal.setAttribute("aria-hidden", "true");
   modalContent.innerHTML = "";
+
+  if (lastFocusedCard instanceof HTMLElement) {
+    lastFocusedCard.focus();
+  }
 }
 
+// Trata clique em um card do catálogo para abrir o modal correspondente
 function handleCardClick(event) {
   const card = event.target.closest(".card");
   if (!card) return;
@@ -218,26 +310,61 @@ function handleCardClick(event) {
   }
 }
 
+function handleCardKeyboard(event) {
+  const card = event.target.closest(".card");
+  if (!card) return;
+
+  const isEnter = event.key === "Enter";
+  const isSpace = event.key === " ";
+
+  if (isEnter || isSpace) {
+    event.preventDefault();
+    handleCardClick(event);
+  }
+}
+
+// Re-renderiza o catálogo quando o tamanho da janela muda
 function handleResize() {
   if (!loadedContents.length) return;
 
-  if (currentFilter === "todos") {
-    displayedContents = buildDisplayedContents(loadedContents);
-  }
-
-  renderCatalog(displayedContents);
+  renderFilteredContents();
 }
 
+// Configura eventos de clique, mudança de filtro e resize
 function setupListeners() {
   if (catalogo) {
     catalogo.addEventListener("click", handleCardClick);
+    catalogo.addEventListener("keydown", handleCardKeyboard);
   }
 
   document.querySelectorAll('input[name="genero"]').forEach((input) => {
     input.addEventListener("change", applyGenreFilter);
   });
 
+  document
+    .querySelectorAll(".sidebar-list button[data-genre]")
+    .forEach((button) => {
+      button.addEventListener("click", () => {
+        applySidebarGenreFilter(button.dataset.genre);
+        closeMenu();
+      });
+    });
+
+  document.querySelectorAll(".header-nav a[data-type]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      const filterType = link.dataset.type;
+      applyTypeFilter(filterType);
+      const targetId = link.getAttribute("href");
+      const target = document.querySelector(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  });
+
   window.addEventListener("resize", handleResize);
+  updateHeaderActiveLink();
 
   if (modal) {
     modal.addEventListener("click", (event) => {
@@ -254,6 +381,7 @@ function setupListeners() {
   }
 }
 
+// Carrega as informações de filmes e séries da API e inicializa o catálogo
 async function carregarConteudos() {
   if (!catalogo) return;
 
@@ -291,4 +419,5 @@ async function carregarConteudos() {
   }
 }
 
+// Inicia o carregamento quando o conteúdo da página estiver pronto
 window.addEventListener("DOMContentLoaded", carregarConteudos);
