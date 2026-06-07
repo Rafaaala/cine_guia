@@ -1,81 +1,144 @@
+/* Estilização geral do corpo da página */
 body {
+  /* Remove a margem padrão do navegador */
   margin: 0;
+
+  /* Define a fonte principal utilizando variável CSS */
   font-family: var(--font-family-base);
+
+  /* Cor de fundo da página */
   background: var(--color-surface-body);
+
+  /* Cor padrão dos textos */
   color: var(--color-text-primary);
+
+  /* Garante que a página ocupe toda a altura da tela */
   min-height: 100vh;
 }
 
-/* HEADER */
+/* =========================================
+   HEADER (Cabeçalho)
+========================================= */
+
 header {
+  /* Cor de fundo do cabeçalho */
   background: var(--color-surface-header);
+
+  /* Cor dos elementos de destaque */
   color: var(--color-action-primary);
+
+  /* Espaçamento interno */
   padding: var(--space-4);
+
+  /* Sombra inferior */
   box-shadow: var(--shadow-default);
 }
 
+/* Container interno do cabeçalho */
 .header-inner {
   position: relative;
+
+  /* Layout flexível */
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  /* Permite quebra de linha */
   flex-wrap: wrap;
+
+  /* Espaçamento entre elementos */
   gap: var(--space-2);
+
+  /* Largura máxima */
   max-width: 1400px;
+
+  /* Centraliza horizontalmente */
   margin: 0 auto;
 }
 
+/* Título principal do cabeçalho */
 .header-title {
   position: absolute;
+
+  /* Centraliza horizontalmente */
   left: 50%;
   transform: translateX(-50%);
+
   margin: 0;
+
+  /* Cor vermelha */
   color: red;
+
+  /* Tamanho da fonte */
   font-size: 1.5rem;
+
+  /* Peso da fonte */
   font-weight: var(--font-weight-bold);
 }
 
+/* Navegação do cabeçalho */
 .header-nav {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   flex-wrap: wrap;
+
   gap: var(--space-2);
+
   margin: 0;
 }
 
+/* Links do cabeçalho */
 .header-nav a {
   color: var(--color-text-primary);
+
   font-weight: var(--font-weight-bold);
+
   font-size: 1rem;
+
+  /* Remove o sublinhado */
   text-decoration: none;
+
   padding: var(--space-2) var(--space-2);
+
   border-radius: var(--radius-small);
+
+  /* Animação suave */
   transition: background 0.2s, color 0.2s;
 }
 
+/* Efeito ao passar o mouse ou focar */
 .header-nav a:hover,
 .header-nav a:focus {
   background: var(--color-action-primary);
   color: var(--color-text-primary);
 }
 
+/* Separador entre links */
 .nav-separator {
   color: var(--color-text-secondary);
   font-weight: var(--font-weight-bold);
 }
 
+/* Botões de menu e troca de tema */
 .menu-toggle,
 .theme-toggle {
   padding: var(--space-2) var(--space-4);
+
   border: none;
+
   border-radius: var(--radius-small);
+
   background: var(--color-action-primary);
+
   color: var(--color-text-primary);
+
   cursor: pointer;
+
   transition: 0.2s;
 }
 
+/* Efeito hover e foco dos botões */
 .menu-toggle:hover,
 .theme-toggle:hover,
 .menu-toggle:focus,
@@ -83,67 +146,108 @@ header {
   background: var(--color-action-primary-hover);
 }
 
-/* NAV */
+/* =========================================
+   MENU DE NAVEGAÇÃO
+========================================= */
+
+/* Lista de navegação */
 nav ul {
   display: flex;
+
   justify-content: center;
   align-items: center;
+
   background: var(--color-surface-body);
+
   padding: var(--space-3) 0;
+
+  /* Remove marcadores da lista */
   list-style: none;
+
   gap: var(--space-8);
+
   margin: 0;
 }
 
+/* Links do menu */
 nav a {
   color: var(--color-text-primary);
+
   font-weight: var(--font-weight-bold);
+
   font-size: 1.1rem;
+
   text-decoration: none;
+
   padding: var(--space-2) var(--space-4);
+
   border-radius: var(--radius-small);
+
   transition: background 0.2s, color 0.2s;
 }
 
+/* Efeito hover e foco */
 nav a:hover,
 nav a:focus {
   background: var(--color-action-primary);
   color: var(--color-text-primary);
 }
 
+/* =========================================
+   RESPONSIVIDADE PARA TABLETS
+========================================= */
+
 @media (max-width: 1024px) {
+
+  /* Reduz o espaçamento do cabeçalho */
   header {
     padding: var(--space-3) var(--space-3);
   }
 
+  /* Ajusta espaçamento interno */
   .header-inner {
     gap: var(--space-2);
   }
 
+  /* Ajusta espaçamento da navegação */
   .header-nav {
     gap: var(--space-2);
   }
 }
 
+/* =========================================
+   RESPONSIVIDADE PARA CELULARES
+========================================= */
+
 @media (max-width: 768px) {
+
+  /* Organiza elementos em coluna */
   .header-inner {
     flex-direction: column;
     align-items: stretch;
     gap: var(--space-3);
   }
 
+  /* Ajusta a navegação */
   .header-nav {
     width: 100%;
+
     justify-content: center;
+
+    /* Move a navegação para baixo */
     order: 2;
+
     gap: var(--space-2);
+
     padding-top: var(--space-2);
   }
 
+  /* Esconde os separadores */
   .nav-separator {
     display: none;
   }
 
+  /* Diminui o tamanho dos links */
   .header-nav a {
     padding: var(--space-2) var(--space-3);
     font-size: 0.95rem;

@@ -1,10 +1,22 @@
+/* Define variáveis globais de espaçamento */
 :root {
 
+  /* Espaçamento de 0.5rem (8px) */
   --space-2: 0.5rem;
+
+  /* Espaçamento de 0.75rem (12px) */
   --space-3: 0.75rem;
+
+  /* Espaçamento de 1rem (16px) */
   --space-4: 1rem;
+
+  /* Espaçamento de 1.5rem (24px) */
   --space-6: 1.5rem;
+
+  /* Espaçamento de 2rem (32px) */
   --space-8: 2rem;
+
+  /* Espaçamento de 2.5rem (40px) */
   --space-10: 2.5rem;
 
 }

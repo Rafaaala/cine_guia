@@ -1,106 +1,240 @@
-/* MAIN */
+/* =========================================
+   CONTEÚDO PRINCIPAL (MAIN)
+========================================= */
+
+/* Container principal da página */
 .main {
   display: flex;
+
+  /* Organiza os elementos em coluna */
   flex-direction: column;
+
+  /* Espaçamento entre as seções */
   gap: var(--space-8);
+
+  /* Ocupa toda a largura disponível */
   width: 100%;
 }
 
+/* =========================================
+   GRID DE CARDS
+========================================= */
+
+/* Grade responsiva para exibição dos cards */
 .grid {
   display: grid;
+
+  /* Cria colunas automaticamente conforme o espaço disponível */
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+  /* Espaçamento entre os cards */
   gap: var(--space-6);
+
+  /* Centraliza os itens */
   justify-content: center;
+
+  /* Faz os cards terem alturas compatíveis */
   align-items: stretch;
 }
 
+/* =========================================
+   CARD
+========================================= */
+
 .card {
-  position: relative; /* necessário para posicionar o preview */
-  overflow: visible; /* permitir overflow do preview */
+
+  /* Necessário para posicionar elementos absolutos dentro dele */
+  position: relative;
+
+  /* Permite que elementos internos ultrapassem os limites */
+  overflow: visible;
+
+  /* Cor de fundo do card */
   background: var(--color-surface-card);
+
+  /* Bordas arredondadas */
   border-radius: var(--radius-default);
+
+  /* Esconde conteúdo que ultrapassar os limites */
   overflow: hidden;
+
+  /* Animações suaves */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  /* Alinhamento do texto */
   text-align: left;
+
+  /* Sombra padrão */
   box-shadow: var(--shadow-default);
+
+  /* Layout flexível */
   display: flex;
   flex-direction: column;
+
+  /* Altura mínima */
   min-height: 100%;
+
+  /* Largura máxima */
   max-width: 100%;
 }
 
-/* wrapper para imagem + vídeo */
-.card-media { position: relative; }
+/* =========================================
+   ÁREA DE MÍDIA
+========================================= */
 
-/* preview em vídeo (inicialmente oculto) */
+/* Container da imagem e do vídeo */
+.card-media {
+  position: relative;
+}
+
+/* =========================================
+   PREVIEW EM VÍDEO
+========================================= */
+
+/* Vídeo de pré-visualização (inicialmente oculto) */
 .card .preview {
   position: absolute;
+
   top: 8px;
   right: 8px;
+
   width: 240px;
   height: 135px;
+
   border-radius: var(--radius-small);
+
   box-shadow: var(--shadow-hover);
+
+  /* Ajusta o vídeo sem distorção */
   object-fit: cover;
+
+  /* Inicialmente invisível */
   visibility: hidden;
   opacity: 0;
+
+  /* Pequena animação de entrada */
   transform: translateY(-6px) scale(0.98);
-  transition: opacity 200ms ease, transform 200ms ease, visibility 0ms linear 200ms;
+
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease,
+    visibility 0ms linear 200ms;
+
+  /* Impede interação com o vídeo */
   pointer-events: none;
+
+  /* Mantém o vídeo acima dos outros elementos */
   z-index: 12;
 }
 
-/* mostra preview ao hover / foco (somente CSS) */
+/* Exibe o vídeo ao passar o mouse ou focar no card */
 .card:hover .preview,
 .card:focus-within .preview {
   visibility: visible;
   opacity: 1;
+
   transform: translateY(0) scale(1);
+
   transition-delay: 0ms;
 }
 
-/* esconder preview em telas pequenas */
+/* =========================================
+   RESPONSIVIDADE DO PREVIEW
+========================================= */
+
+/* Oculta o preview em telas pequenas */
 @media (max-width: 768px) {
-  .card .preview { display: none; }
+  .card .preview {
+    display: none;
+  }
 }
 
-/* maior no desktop largo */
+/* Aumenta o preview em telas grandes */
 @media (min-width: 1200px) {
-  .card .preview { width: 320px; height: 180px; }
+  .card .preview {
+    width: 320px;
+    height: 180px;
+  }
 }
+
+/* =========================================
+   IMAGEM DO CARD
+========================================= */
 
 .card img {
+
+  /* Ocupa toda a largura */
   width: 100%;
+
+  /* Mantém proporção semelhante a pôster de filme */
   aspect-ratio: 2 / 3;
+
+  /* Ajusta a imagem sem deformar */
   object-fit: cover;
+
+  /* Cor exibida enquanto a imagem não carrega */
   background: #222;
 }
 
+/* =========================================
+   TÍTULO DO CARD
+========================================= */
+
 .card h3 {
+
+  /* Tamanho da fonte */
   font-size: var(--font-size-lg);
+
+  /* Negrito */
   font-weight: var(--font-weight-bold);
+
+  /* Margens */
   margin: var(--space-4) var(--space-4) var(--space-2);
+
+  /* Cor de destaque */
   color: var(--color-accent);
 }
 
+/* =========================================
+   DESCRIÇÃO DO CARD
+========================================= */
+
 .card p {
+
   color: var(--color-text-secondary);
+
   margin: 0 var(--space-4) var(--space-2);
+
   font-size: var(--font-size-base);
 }
 
+/* Remove margem extra do último parágrafo */
 .card p:last-child {
   margin-bottom: var(--space-4);
 }
 
+/* =========================================
+   EFEITO HOVER
+========================================= */
+
+/* Eleva o card ao passar o mouse */
 .card:hover,
 .card:focus-visible {
+
   transform: translateY(-4px) scale(1.03);
+
   box-shadow: var(--shadow-hover);
 }
 
+/* =========================================
+   RESPONSIVIDADE DA GRID
+========================================= */
+
+/* Em celulares, exibe apenas uma coluna */
 @media (max-width: 768px) {
+
   .grid {
     grid-template-columns: 1fr;
   }
+
 }

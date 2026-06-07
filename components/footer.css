@@ -1,10 +1,30 @@
+/* =========================================
+   RODAPÉ (FOOTER)
+========================================= */
+
 footer {
+
+  /* Adiciona espaço acima do rodapé */
   margin-top: var(--space-8);
+
+  /* Centraliza o texto */
   text-align: center;
+
+  /* Espaçamento interno */
   padding: var(--space-4);
+
+  /* Cor de fundo do rodapé */
   background: var(--color-surface-header);
+
+  /* Cor do texto secundário */
   color: var(--color-text-secondary);
+
+  /* Tamanho da fonte */
   font-size: var(--font-size-base);
+
+  /* Espaçamento entre letras */
   letter-spacing: 0.03em;
+
+  /* Adiciona sombra ao rodapé */
   box-shadow: var(--shadow-default);
 }

@@ -1,20 +1,50 @@
+/* Define variáveis globais de cores, bordas arredondadas e sombras */
 :root {
 
+  /* =========================================
+     CORES NEUTRAS
+  ========================================= */
+
+  /* Tom escuro utilizado como fundo principal */
   --_neutral-900: #181a1b;
+
+  /* Tom escuro utilizado em cards e cabeçalhos */
   --_neutral-800: #23272b;
+
+  /* Tom ainda mais escuro para detalhes e fundos */
   --_neutral-700: #101113;
 
+  /* Cor branca padrão */
   --_white: #ffffff;
 
+  /* =========================================
+     CORES DE DESTAQUE
+  ========================================= */
+
+  /* Vermelho principal */
   --_red-500: #f00000;
+
+  /* Vermelho mais escuro para efeito hover */
   --_red-700: #b20710;
 
-  /* RADIUS */
+  /* =========================================
+     RADIUS (BORDAS ARREDONDADAS)
+  ========================================= */
+
+  /* Arredondamento pequeno */
   --radius-small: 0.5rem;
+
+  /* Arredondamento padrão */
   --radius-default: 1rem;
 
-  /* SHADOWS */
+  /* =========================================
+     SHADOWS (SOMBRAS)
+  ========================================= */
+
+  /* Sombra padrão para elementos */
   --shadow-default: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  /* Sombra mais intensa para efeito hover */
   --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.25);
 
 }

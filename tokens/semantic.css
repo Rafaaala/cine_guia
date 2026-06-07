@@ -1,35 +1,72 @@
+/* Define variáveis globais de cores para o tema padrão (modo escuro) */
 :root {
 
+  /* Cores de fundo */
+
+  /* Cor de fundo principal da página */
   --color-surface-body: var(--_neutral-900);
+
+  /* Cor de fundo dos cards */
   --color-surface-card: var(--_neutral-800);
+
+  /* Cor de fundo do cabeçalho */
   --color-surface-header: var(--_neutral-800);
 
+  /* Cores de ações (botões e elementos interativos) */
+
+  /* Cor principal dos botões */
   --color-action-primary: var(--_red-500);
+
+  /* Cor ao passar o mouse sobre os botões */
   --color-action-primary-hover: var(--_red-700);
 
+  /* Cores de texto */
+
+  /* Cor principal dos textos */
   --color-text-primary: var(--_white);
+
+  /* Cor secundária dos textos */
   --color-text-secondary: #b0b0b0;
+
+  /* Cor de destaque */
   --color-accent: var(--_red-500);
 
+  /* Cor padrão das bordas */
   --color-border-default: #404040;
 
 }
 
 /* =========================================
-   LIGHT MODE
+   LIGHT MODE (Modo Claro)
 ========================================= */
 
+/* As variáveis abaixo serão usadas quando o atributo
+   data-theme="light" estiver definido no HTML */
 [data-theme="light"] {
 
+  /* Cores de fundo */
+
+  /* Fundo principal da página */
   --color-surface-body: #f5f5f5;
+
+  /* Fundo dos cards */
   --color-surface-card: #ffffff;
+
+  /* Fundo do cabeçalho */
   --color-surface-header: #e5e5e5;
 
+  /* Cores de texto */
+
+  /* Texto principal */
   --color-text-primary: #181a1b;
+
+  /* Texto secundário */
   --color-text-secondary: #555555;
 
+  /* Cor das bordas */
   --color-border-default: #d1d1d1;
 
+  /* Cor de destaque (mantida vermelha) */
   --color-accent: var(--_red-500);
 
 }

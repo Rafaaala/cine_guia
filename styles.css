@@ -1,14 +1,44 @@
+/* =========================================
+   DEFINIÇÃO DAS CAMADAS CSS
+========================================= */
+
+/* Cria as camadas utilizadas no projeto */
 @layer tokens, components;
 
+/* =========================================
+   IMPORTAÇÃO DOS TOKENS
+========================================= */
+
+/* Importa as cores, sombras e variáveis primitivas */
 @import "./tokens/primitivos.css" layer(tokens);
+
+/* Importa variáveis semânticas (cores com significado) */
 @import "./tokens/semantic.css" layer(tokens);
+
+/* Importa variáveis de espaçamento */
 @import "./tokens/spacing.css" layer(tokens);
+
+/* Importa variáveis de tipografia */
 @import "./tokens/typography.css" layer(tokens);
 
-@import "./components/card.css" layer(components);
-@import "./components/footer.css" layer(components);
-@import "./components/forms.css" layer(components);
-@import "./components/icons.css" layer(components);
-@import "./components/layout.css" layer(components);
-@import "./components/navbar.css" layer(components);
+/* =========================================
+   IMPORTAÇÃO DOS COMPONENTES
+========================================= */
 
+/* Importa os estilos dos cards */
+@import "./components/card.css" layer(components);
+
+/* Importa os estilos do rodapé */
+@import "./components/footer.css" layer(components);
+
+/* Importa os estilos dos formulários */
+@import "./components/forms.css" layer(components);
+
+/* Importa os estilos dos ícones */
+@import "./components/icons.css" layer(components);
+
+/* Importa os estilos de layout */
+@import "./components/layout.css" layer(components);
+
+/* Importa os estilos da barra de navegação */
+@import "./components/navbar.css" layer(components);

@@ -1,113 +1,196 @@
-﻿* {
+﻿/* Remove margens e espaçamentos padrão de todos os elementos */
+* {
   margin: 0;
   padding: 0;
+
+  /* Faz com que padding e borda sejam incluídos no tamanho total do elemento */
   box-sizing: border-box;
+
+  /* Define a fonte padrão da página */
   font-family: cursive;
 }
 
+/* Estilização geral do corpo da página */
 body {
+  /* Altura mínima ocupando toda a tela */
   min-height: 100vh;
+
+  /* Organiza os elementos em coluna */
   display: flex;
   flex-direction: column;
+
+  /* Fundo com gradiente escuro */
   background: linear-gradient(135deg, #101113 0%, #23272b 100%);
+
+  /* Cor padrão dos textos */
   color: #ffffff;
 }
 
+/* Cabeçalho da página */
 header {
   width: 100%;
   padding: 1.2rem 1rem;
   text-align: center;
+
+  /* Cor de fundo */
   background: #181a1b;
+
+  /* Sombra interna na parte inferior */
   box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.05);
 }
 
+/* Título principal do cabeçalho */
 header h1 {
   font-size: 1.5rem;
   color: #ffffff;
 }
 
+/* Área principal do conteúdo */
 main {
+  /* Ocupa todo o espaço disponível */
   flex: 1;
+
+  /* Centraliza o conteúdo horizontal e verticalmente */
   display: flex;
   align-items: center;
   justify-content: center;
+
   padding: 1.5rem;
 }
 
+/* Rodapé */
 footer {
   text-align: center;
   padding: 1rem;
   font-size: 0.85rem;
+
+  /* Cor com transparência */
   color: rgba(255, 255, 255, 0.65);
 }
 
+/* Container do formulário de login */
 .login-container {
   width: 100%;
+
+  /* Largura máxima para não ficar muito grande */
   max-width: 420px;
+
+  /* Fundo transparente com efeito vidro */
   background: rgba(255, 255, 255, 0.05);
+
+  /* Borda suave */
   border: 1px solid rgba(255, 255, 255, 0.12);
+
+  /* Bordas arredondadas */
   border-radius: 1rem;
+
   padding: 2rem;
+
+  /* Sombra externa */
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+
+  /* Efeito de desfoque atrás do container */
   backdrop-filter: blur(10px);
 }
 
+/* Título do formulário */
 .login-container h2 {
   margin-bottom: 1.5rem;
   color: #ffffff;
   text-align: center;
 }
 
+/* Grupo contendo label e input */
 .form-group {
   margin-bottom: 1.25rem;
 }
 
+/* Texto dos rótulos */
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
   font-size: 0.95rem;
+
+  /* Branco levemente transparente */
   color: rgba(255, 255, 255, 0.75);
 }
 
+/* Campos de entrada */
 .form-group input {
   width: 100%;
+
   padding: 0.95rem 1rem;
+
+  /* Borda suave */
   border: 1px solid rgba(255, 255, 255, 0.15);
+
   border-radius: 0.85rem;
+
+  /* Fundo transparente */
   background: rgba(255, 255, 255, 0.06);
+
   color: #ffffff;
+
+  /* Remove a borda padrão ao clicar */
   outline: none;
+
+  /* Animação suave nas mudanças */
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
+/* Texto placeholder (ex.: "Digite seu email") */
 .form-group input::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
 
+/* Quando o input recebe foco */
 .form-group input:focus {
+  /* Destaca a borda em vermelho */
   border-color: #e50914;
+
+  /* Cria um brilho ao redor */
   box-shadow: 0 0 0 4px rgba(229, 9, 20, 0.12);
 }
 
+/* Botão de login */
 .login-button {
   width: 100%;
   padding: 1rem;
+
+  /* Remove a borda padrão */
   border: none;
+
   border-radius: 0.95rem;
+
+  /* Gradiente vermelho */
   background: linear-gradient(90deg, #e50914 0%, #b20710 100%);
+
   color: #ffffff;
+
+  /* Texto em negrito */
   font-weight: 700;
+
+  /* Muda o cursor para mãozinha */
   cursor: pointer;
+
+  /* Transição suave */
   transition: transform 0.2s ease, filter 0.2s ease;
 }
 
+/* Efeito ao passar o mouse ou focar no botão */
 .login-button:hover,
 .login-button:focus {
+  /* Levanta levemente o botão */
   transform: translateY(-1px);
+
+  /* Aumenta um pouco o brilho */
   filter: brightness(1.05);
 }
 
+/* Estilos para telas maiores que 768px */
 @media (min-width: 768px) {
+
+  /* Aumenta o espaçamento interno do container */
   .login-container {
     padding: 2.5rem;
   }

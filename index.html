@@ -1,23 +1,47 @@
 <!DOCTYPE html>
+<!-- Informa ao navegador que o documento utiliza HTML5 -->
 <html lang="pt-BR" data-theme="dark">
+<!-- Define o idioma da página como português do Brasil -->
+<!-- data-theme é usado para controlar o tema escuro/claro -->
+
 <head>
   <meta charset="UTF-8" />
+   <!-- Permite exibir caracteres especiais corretamente -->
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Faz a página se adaptar a diferentes tamanhos de tela -->
+
   <title>Guia de Cinema</title>
+  <!-- Título exibido na aba do navegador -->
+
   <link rel="stylesheet" href="./styles.css" />
+   <!-- Importa o arquivo CSS principal -->
+
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <!-- Importa os ícones do Google -->
 </head>
 
 <body>
   <header>
+    <!-- Cabeçalho principal da página -->
+    
     <div class="header-inner">
-      <button class="menu-toggle" onclick="toggleMenu()" aria-expanded="false" aria-controls="sidebar" aria-label="Abrir menu">
-        <span class="material-symbols-outlined">menu</span>
-      </button>
+       <!-- Container que organiza os elementos do cabeçalho -->
+
+      <button class="menu-toggle" onclick="toggleMenu()" aria-expanded="false" 
+      aria-controls="sidebar" aria-label="Abrir menu">
+      <!-- Botão responsável por abrir e fechar o menu lateral -->
+
+      <span class="material-symbols-outlined">menu</span>
+    <!-- Ícone de menu -->  
+    </button>
 
       <h1 class="header-title">CineGuia</h1>
+      <!-- Nome do sistema -->
 
       <nav class="header-nav">
+         <!-- Área de navegação principal -->
+
         <a href="#inicio">Início</a>
         <span class="nav-separator" aria-hidden="true">|</span>
         <a href="#filmes">Filmes</a>
@@ -25,12 +49,16 @@
         <a href="#series">Séries</a>
         <span class="nav-separator" aria-hidden="true">|</span>
         <a href="#contato">Contato</a>
+         <!-- Links de navegação -->
       </nav>
     </div>
   </header>
 
   <aside class="sidebar" id="sidebar" aria-label="Navegação de gêneros" aria-hidden="true">
+     <!-- Menu lateral de gêneros -->
     <button class="sidebar-close" onclick="toggleMenu()" aria-label="Fechar menu">
+       <!-- Fecha o menu lateral -->
+
       <span class="material-symbols-outlined">close</span>
     </button>
 
@@ -43,6 +71,7 @@
       <li><button type="button">Documentário</button></li>
       <li>
         <button class="theme-toggle" onclick="toggleTheme()" type="button" aria-label="Alternar tema">
+          <!-- Alterna entre tema claro e escuro -->
           <span class="material-symbols-outlined">contrast</span>
           Tema
         </button>
@@ -54,11 +83,16 @@
   </aside>
 
   <div class="backdrop" id="backdrop" onclick="closeMenu()" aria-hidden="true"></div>
+<!-- Fundo escurecido que aparece quando o menu é aberto -->
 
   <div class="layout">
     <main class="main">
+      <!-- Conteúdo principal da página -->
+
       <div class="filtros">
+       <!-- Área de filtros de gêneros -->
         <input type="radio" name="genero" id="todos" checked />
+        <!-- Opção selecionada por padrão -->
         <label for="todos">Todos</label>
 
         <input type="radio" name="genero" id="terror" />
@@ -75,10 +109,16 @@
       </div>
 
       <div class="grid">
+       <!-- Grade que organiza todos os cards -->
         <article class="card comedia">
+          <!-- Card de filme do gênero comédia -->
+
           <div class="card-media">
+            <!-- Área que contém imagem e vídeo -->
             <img src="./assents/Sininho_capa_do_filme.webp" alt="Tinker Bell" />
+              <!-- Capa do filme -->
             <video class="preview" autoplay muted loop playsinline preload="metadata" src="./assents/tinker-video.mp4" aria-hidden="true"></video>
+             <!-- Vídeo de prévia do filme -->
           </div>
           <h3>Tinker Bell (2008)</h3>
           <p>⭐⭐⭐⭐⭐</p>
@@ -155,24 +195,7 @@
           <p>Castanha é um macaco prego liberado na Floresta Amazônica.</p>
         </article>
       </div>
-
-      <section class="cadastro">
-        <h2>
-          <span class="material-symbols-outlined">arrow_shape_up</span>
-          Receba novidades
-        </h2>
-        <p>Cadastre-se para receber novos filmes e atualizações!</p>
-
-        <form>
-          <input type="text" placeholder="Seu nome" required />
-          <input type="email" placeholder="Seu email" required />
-          <button type="submit">Cadastrar</button>
-        </form>
-      </section>
-    </main>
-  </div>
-
-  <footer>
+      <footer>
     <p>© 2026 Guia de Cinema. Todos os direitos reservados.</p>
   </footer>
 

@@ -1,82 +1,146 @@
-/* FILTROS */
+/* =========================================
+   FILTROS
+========================================= */
+
+/* Container dos filtros */
 .filtros {
+  /* Organiza os filtros lado a lado */
   display: flex;
+
+  /* Permite quebra de linha em telas menores */
   flex-wrap: wrap;
+
+  /* Espaçamento entre os filtros */
   gap: var(--space-3);
+
+  /* Espaçamento inferior */
   margin-bottom: var(--space-6);
 }
 
+/* Esconde os inputs de rádio ou checkbox */
 .filtros input {
   display: none;
 }
 
+/* Estilo visual dos filtros */
 .filtros label {
   padding: var(--space-2) var(--space-4);
+
+  /* Bordas arredondadas estilo "pill" */
   border-radius: 2rem;
+
   background: var(--color-surface-card);
+
   color: var(--color-text-secondary);
+
   cursor: pointer;
+
   border: 1.5px solid var(--color-border-default);
+
   font-size: var(--font-size-base);
+
   transition: background 0.2s, color 0.2s;
 }
 
+/* Efeito ao passar o mouse ou focar */
 .filtros label:hover,
 .filtros label:focus {
   background: var(--color-action-primary);
+
   color: var(--color-text-primary);
 }
 
+/* Destaca o filtro selecionado */
 input:checked + label {
   background: var(--color-action-primary);
+
   color: var(--color-text-primary);
 }
 
-/* CADASTRO */
+/* =========================================
+   FORMULÁRIO DE CADASTRO
+========================================= */
+
+/* Container principal do cadastro */
 .cadastro {
   background: var(--color-surface-card);
+
   padding: var(--space-6);
+
   border-radius: var(--radius-default);
+
   box-shadow: var(--shadow-default);
+
+  /* Limita a largura máxima */
   max-width: 760px;
+
+  /* Responsivo */
   width: min(100%, 760px);
+
+  /* Centraliza o formulário */
   margin: 0 auto var(--space-8);
 }
 
+/* Formulário interno */
 .cadastro form {
   display: flex;
+
+  /* Organiza os campos em coluna */
   flex-direction: column;
+
   gap: var(--space-4);
 }
 
+/* Campos de entrada */
 .cadastro input {
   width: 100%;
+
   padding: var(--space-3);
+
   border-radius: var(--radius-small);
+
   border: 1px solid var(--color-border-default);
+
   background: var(--color-surface-body);
+
   color: var(--color-text-primary);
 }
 
+/* Botão do formulário */
 .cadastro button {
   width: 100%;
+
   padding: var(--space-3);
+
   border: none;
+
   border-radius: var(--radius-small);
+
   background: var(--color-action-primary);
+
   color: var(--color-text-primary);
+
   cursor: pointer;
+
   transition: background 0.2s ease;
 }
 
+/* Efeito ao passar o mouse ou focar */
 .cadastro button:hover,
 .cadastro button:focus {
   background: var(--color-action-primary-hover);
 }
 
+/* =========================================
+   RESPONSIVIDADE PARA CELULARES
+========================================= */
+
 @media (max-width: 768px) {
+
+  /* Ajusta o espaçamento do formulário */
   .cadastro {
     padding: var(--space-5);
     margin-bottom: var(--space-6);
   }
+
 }

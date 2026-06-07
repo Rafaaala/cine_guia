@@ -1,24 +1,41 @@
-.material-symbols-outlined {
-  font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 48;
+/* =========================================
+   ÍCONES MATERIAL SYMBOLS
+========================================= */
 
+/* Configuração padrão dos ícones do Google Material Symbols */
+.material-symbols-outlined {
+
+  /* Configurações de aparência do ícone */
+  font-variation-settings:
+    'FILL' 0,   /* Ícone sem preenchimento */
+    'wght' 400, /* Espessura normal */
+    'GRAD' 0,   /* Gradiente padrão */
+    'opsz' 48;  /* Tamanho otimizado do ícone */
+
+  /* Alinha o ícone ao centro do texto */
   vertical-align: middle;
+
+  /* Tamanho padrão dos ícones */
   font-size: 2rem;
 }
 
+/* Ícone principal com tamanho maior */
 .material-symbols-outlined.main-icon {
   font-size: 3.2rem;
 }
 
+/* =========================================
+   RESPONSIVIDADE PARA CELULARES
+========================================= */
+
 @media (max-width: 600px) {
 
+  /* Reduz o tamanho do ícone principal */
   .material-symbols-outlined.main-icon {
     font-size: 2.2rem;
   }
 
+  /* Reduz o tamanho do título do cabeçalho */
   header h1 {
     font-size: 1.5rem;
   }

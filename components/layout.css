@@ -1,123 +1,231 @@
-/* LAYOUT */
+/* =========================================
+   LAYOUT PRINCIPAL
+========================================= */
+
+/* Container principal da página */
 .layout {
+  /* Define largura máxima */
   max-width: 1400px;
+
+  /* Centraliza o conteúdo */
   margin: 0 auto;
+
+  /* Espaçamento interno */
   padding: var(--space-6) var(--space-4) var(--space-10);
+
+  /* Utiliza Grid Layout */
   display: grid;
+
+  /* Espaçamento entre os elementos */
   gap: var(--space-8);
+
+  /* Habilita Container Queries */
   container-type: inline-size;
+
+  /* Nome do container para uso em @container */
   container-name: layout;
 }
 
+/* =========================================
+   SIDEBAR (MENU LATERAL)
+========================================= */
+
 .sidebar {
+  /* Fixa a sidebar na tela */
   position: fixed;
+
   top: 0;
   left: 0;
+
+  /* Altura total da tela */
   height: 100vh;
+
+  /* Largura responsiva */
   width: min(280px, 80vw);
+
+  /* Cor de fundo */
   background: var(--color-surface-card);
+
+  /* Espaçamento interno */
   padding: var(--space-6) var(--space-4);
+
+  /* Sombra lateral */
   box-shadow: 4px 0 24px rgba(0, 0, 0, 0.35);
+
+  /* Mantém o menu escondido inicialmente */
   transform: translateX(-100%);
+
+  /* Animação de abertura e fechamento */
   transition: transform 0.3s ease;
+
+  /* Camada acima dos outros elementos */
   z-index: 30;
+
+  /* Adiciona rolagem se necessário */
   overflow-y: auto;
+
+  /* Organiza os itens em coluna */
   display: flex;
   flex-direction: column;
+
   gap: var(--space-2);
 }
 
+/* Quando a sidebar estiver aberta */
 .sidebar.open {
   transform: translateX(0);
 }
 
+/* Título da sidebar */
 .sidebar h2 {
   margin: 0 0 var(--space-4);
 }
 
+/* Lista de opções do menu */
 .sidebar-list {
   list-style: none;
+
   padding: 0;
   margin: 0;
+
   display: grid;
+
   gap: var(--space-2);
 }
 
+/* Botões da sidebar */
 .sidebar li button {
   width: 100%;
+
   text-align: left;
+
   padding: var(--space-2) var(--space-3);
+
   border: none;
+
   border-radius: var(--radius-small);
+
   background: var(--color-surface-body);
+
   color: var(--color-text-primary);
+
   cursor: pointer;
+
   transition: background 0.2s, color 0.2s;
 }
 
+/* Efeito ao passar o mouse ou focar */
 .sidebar li button:hover,
 .sidebar li button:focus {
   background: var(--color-action-primary);
   color: var(--color-text-primary);
 }
 
+/* Botão de troca de tema */
 .sidebar .theme-toggle {
   display: flex;
   align-items: center;
   gap: var(--space-2);
 }
 
+/* Botão de logout */
 .sidebar .sidebar-logout {
   background: var(--color-action-primary);
   color: var(--color-text-primary);
 }
 
+/* Botão de fechar a sidebar */
 .sidebar-close {
   align-self: flex-end;
+
   background: transparent;
+
   border: none;
+
   color: var(--color-text-primary);
+
   cursor: pointer;
+
   padding: var(--space-2);
 }
 
+/* =========================================
+   BACKDROP (FUNDO ESCURECIDO)
+========================================= */
+
 .backdrop {
   position: fixed;
+
+  /* Ocupa toda a tela */
   inset: 0;
+
+  /* Fundo semitransparente */
   background: rgba(0, 0, 0, 0.4);
+
+  /* Inicialmente invisível */
   opacity: 0;
+
+  /* Impede interação quando oculto */
   pointer-events: none;
+
   transition: opacity 0.3s ease;
+
   z-index: 20;
 }
 
+/* Quando o backdrop estiver visível */
 .backdrop.visible {
   opacity: 1;
+
+  /* Permite interação */
   pointer-events: auto;
 }
 
+/* =========================================
+   CONTAINER QUERY
+========================================= */
+
+/* Ajusta o layout quando o container atingir 800px */
 @container layout (min-width: 800px) {
+
   .layout {
     padding: var(--space-8) var(--space-6) var(--space-10);
   }
+
 }
 
+/* =========================================
+   RESPONSIVIDADE PARA TABLETS
+========================================= */
+
 @media (max-width: 1024px) {
+
+  /* Reduz o espaçamento do layout */
   .layout {
     padding: var(--space-6) var(--space-4) var(--space-6);
   }
 
+  /* Reduz a largura da sidebar */
   .sidebar {
     width: min(260px, 70vw);
   }
+
 }
 
+/* =========================================
+   RESPONSIVIDADE PARA CELULARES
+========================================= */
+
 @media (max-width: 768px) {
+
+  /* Reduz ainda mais os espaçamentos */
   .layout {
     padding: var(--space-4) var(--space-3) var(--space-6);
   }
 
+  /* Sidebar ocupa mais espaço da tela */
   .sidebar {
     width: min(260px, 90vw);
   }
+
 }

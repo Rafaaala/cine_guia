@@ -1,39 +1,81 @@
 <!DOCTYPE html>
 <html lang="PT-BR">
 <head>
+
+    <!-- Define a codificação de caracteres para suportar acentos e caracteres especiais -->
     <meta charset="UTF-8">
+
+    <!-- Faz com que a página se adapte corretamente a dispositivos móveis -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título exibido na aba do navegador -->
     <title>Login</title>
+
+    <!-- Importa o arquivo CSS responsável pela estilização da página -->
     <link rel="stylesheet" href="cadastro.css">
+
 </head>
 <body>
 
+  <!-- Cabeçalho da página -->
   <header>
+
+    <!-- Título principal -->
     <h1>Cadastro</h1>
+
   </header>
 
+  <!-- Conteúdo principal da página -->
   <main>
+
+    <!-- Container do formulário de login -->
     <div class="login-container">
+
+      <!-- Título do formulário -->
       <h2>Entrar</h2>
 
+      <!-- Formulário de login -->
       <form action="../index.html" method="get">
+
+        <!-- Campo de email -->
         <div class="form-group">
+
+          <!-- Rótulo do campo -->
           <label for="email">Email</label>
+
+          <!-- Campo para digitar o email -->
           <input type="email" id="email" name="email" required>
+
         </div>
 
+        <!-- Campo de senha -->
         <div class="form-group">
+
+          <!-- Rótulo do campo -->
           <label for="senha">Senha</label>
+
+          <!-- Campo para digitar a senha -->
           <input type="password" id="senha" name="senha" required>
+
         </div>
 
-        <button type="submit" class="login-button">Entrar</button>
+        <!-- Botão para enviar o formulário -->
+        <button type="submit" class="login-button">
+          Entrar
+        </button>
+
       </form>
+
     </div>
+
   </main>
 
+  <!-- Rodapé da página -->
   <footer>
+
+    <!-- Informação de direitos autorais -->
     <p>© 2026 - Ruth Rafaella Diniz Cordeiro</p>
+
   </footer>
 
 </body>
