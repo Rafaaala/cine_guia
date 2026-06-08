@@ -1,0 +1,4 @@
+/* Temporary bundle wrapper: import the existing manifest to preserve load order.
+   A build step can replace this with a true concatenated + minified bundle.
+*/
+@import "./styles.css";

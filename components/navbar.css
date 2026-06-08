@@ -149,8 +149,21 @@ nav a:focus {
 @media (max-width: 768px) {
   .header-inner {
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
     gap: var(--space-3);
+  }
+
+  /* Evita que botões internos (ex: menu-toggle) se estendam em cross-axis */
+  .menu-toggle {
+    align-self: flex-start;
+    width: auto;
+    display: inline-flex;
+  }
+
+  /* Garantir indicador de foco claro para acessibilidade */
+  .menu-toggle:focus-visible {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
   }
 
   .header-nav {
