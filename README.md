@@ -16,6 +16,7 @@ Aplicação web desenvolvida com HTML5 e CSS3, focada em acessibilidade, respons
 - HTML5
 - CSS3 (Flexbox, Grid, Media Queries)
 - Google Material Symbols
+- API TMDB
 
 ## 🎯 Objetivo
 
